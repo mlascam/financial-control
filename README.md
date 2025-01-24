@@ -1,50 +1,140 @@
-# Financial Control Project
+# Financial Control
 
-## Motivation
-This project was born out of a desire to help a friend struggling with financial management. By addressing the imbalance between their income and expenses, the goal is to foster better spending habits, enable savings, and optimize the use of their money.
+A Python-based project designed to streamline the analysis of personal finances, enabling users to extract, process, and visualize financial data from PDF files such as salary receipts, credit card statements, and more. This tool is perfect for anyone looking to gain control over their expenses, track trends, and make informed financial decisions.
 
-## Project Goals
-1. **Data Collection**: Accumulate and process credit card statements to create a structured dataset.
-2. **Data Exploration**: Develop an interactive dashboard in Tableau to analyze and visualize spending trends.
-3. **Machine Learning Implementation**: Design an algorithm to predict future financial behavior based on historical data, providing actionable insights for improved financial planning.
+---
 
-## Key Features
-- **PDF Processing**: Extract transaction data from credit card statements in PDF format (Visa, Amex, MasterCard).
-- **Data Homogenization**: Standardize the format of dates and amounts to create a cohesive dataset.
-- **Predictive Analytics**: Implement a machine learning model to forecast spending and identify potential areas for cost optimization.
+## Features
 
-## Tools and Technologies
-- **Python**: Used for data extraction and preprocessing.
-- **Tableau**: Chosen for building the dashboard to explore and analyze the data.
-- **Machine Learning**: Future implementation to create predictive models.
+- **PDF Data Extraction**: Automatically extracts relevant data (e.g., salary base, expenses) from multiple PDFs in a folder.
+- **Expense Categorization**: Categorizes transactions based on descriptions using a customizable dictionary.
+- **Interactive Visualizations**: Generates insights through dynamic charts and temporal trend analysis.
+- **Custom Date Parsing**: Handles financial data by parsing months and years from filenames for accurate temporal grouping.
+- **Export to CSV**: Outputs processed data into CSV format for further analysis.
 
-## Folder Structure
+---
+
+## Getting Started
+
+### Prerequisites
+
+1. Python 3.8 or higher.
+2. Required libraries:
+   - `pdfplumber`
+   - `pandas`
+   - `matplotlib`
+   - `seaborn`
+   - `plotly`
+
+Install them via:
+```bash
+pip install pdfplumber pandas matplotlib seaborn plotly
 ```
-Financial-Control/
-├── raw_pdfs/          # PDFs containing credit card statements
-├── processed_data/    # Extracted and standardized CSV files
-├── notebooks/         # Jupyter Notebooks for data preprocessing and analysis
-├── scripts/           # Python scripts for PDF processing
-└── README.md          # Project documentation
+
+### Folder Structure
+
+Ensure your folder structure looks like this:
+```
+Financial Control/
+├── raw_pdfs/         # Folder containing all PDF files
+├── processed_data/   # Folder for saving the processed CSV files
+├── scripts/          # Python scripts for running the project
 ```
 
-## How to Use
-1. **Set up the environment**:
-   - Install the required libraries:
-     ```bash
-     pip install -r requirements.txt
-     ```
-2. **Process PDFs**:
-   - Use the provided scripts to extract and standardize transaction data.
-3. **Visualize Data**:
-   - Import the processed CSV files into Tableau to explore spending trends.
-4. **Run Machine Learning Models**:
-   - Once implemented, use the notebooks to predict future financial behavior.
+### Installation
 
-## Future Work
-- **Algorithm Optimization**: Refine the machine learning model for improved prediction accuracy.
-- **Integration**: Develop an automated pipeline to update the dashboard with new data.
-- **Behavioral Insights**: Leverage clustering techniques to categorize spending patterns.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/mlascam/financial-control.git
+   ```
+2. Navigate to the project folder:
+   ```bash
+   cd financial-control
+   ```
+3. Run the Python scripts from the `scripts/` directory.
 
-## Acknowledgments
-This project is dedicated to helping others achieve financial stability and improve their quality of life through data-driven insights.
+---
+
+## Usage
+
+### 1. Extract Financial Data
+Run the script to extract salary base and other financial metrics from PDFs in the specified folder.
+```bash
+python extract_financial_data.py
+```
+
+### 2. Customize Categories
+Edit the categorization dictionary in the script to match your specific transaction descriptions. Example:
+```python
+category_dict = {
+    "PEDIDOSYA": "Food Delivery",
+    "COTO": "Supermarket",
+    "MERCADOLIBRE": "Online Shopping"
+}
+```
+
+### 3. Visualize Insights
+Leverage the visualization scripts to analyze trends:
+- Spending over time
+- Spending by category
+
+Example:
+```bash
+python visualize_financial_data.py
+```
+
+---
+
+## Outputs
+
+### CSV File
+Processed data is saved in `processed_data/combined_data.csv` with the following columns:
+- `PDF File`: Name of the source PDF
+- `Page`: Page number in the PDF
+- `Description`: Extracted transaction description
+- `Amount`: Transaction amount
+- `Category`: Assigned category (if applicable)
+- `Date`: Parsed date based on the filename
+
+### Interactive Charts
+Generates dynamic charts to explore:
+- Spending trends (monthly/yearly)
+- Category-wise expenses
+- Custom filters for deeper analysis
+
+---
+
+## Contribution
+
+Contributions are welcome! To contribute:
+1. Fork the repository.
+2. Create a feature branch:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add your message here"
+   ```
+4. Push the branch:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+5. Open a Pull Request.
+
+---
+
+## License
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+---
+
+## Connect
+
+- GitHub: [mlascam](https://github.com/mlascam)
+- LinkedIn: [Maximiliano Lasca](https://www.linkedin.com/in/maximiliano-lasca)
+
+---
+
+Start taking control of your finances today with **Financial Control**!
